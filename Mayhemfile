@@ -1,0 +1,5 @@
+project: dcmqi
+target: dcmqi
+
+cmds:
+  - cmd: /repo/build/DCMTK-build/bin/dcm2xml @@
