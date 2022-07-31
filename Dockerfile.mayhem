@@ -10,11 +10,5 @@ WORKDIR /repo/build
 RUN cmake ..
 RUN make -j8
 
-RUN mkdir -p /deps
-RUN ldd /repo/build/DCMTK-build/bin/dcm2xml | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
-
 FROM ubuntu:16.04 as package
-
-COPY --from=builder /deps /deps
-COPY --from=builder /repo/build/DCMTK-build/bin/dcm2xml /repo/build/DCMTK-build/bin/dcm2xml
-ENV LD_LIBRARY_PATH=/deps
+COPY --from=builder /repo/build/DCMTK-build/bin/dcm2xml /
