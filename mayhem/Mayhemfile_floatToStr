@@ -1,0 +1,5 @@
+project: dcmqi
+target: floatostr
+
+cmds:
+  - cmd: /fuzz_floatToStr
